@@ -18,33 +18,36 @@ add_shortcode( 'techcareers-calc', 'techCareersCalculator');
 function techCareersCalculator()
 {
     $result = FALSE;
-    if ( !empty( $_GET ) )
+    if ( !empty( $_POST ) )
     {
-        switch ( $_GET['op'] )
+        switch ( $_POST['op'] )
         {
             case 'addition':
                 $opSymbol = '+';
-                $result = $_GET['value1'] + $_GET['value2'];
+                $result = $_POST['value1'] + $_POST['value2'];
                 break;
             case 'subtraction':
                 $opSymbol = '-';
-                $result = $_GET['value1'] - $_GET['value2'];
+                $result = $_POST['value1'] - $_POST['value2'];
                 break;
             case 'multiplication':
                 $opSymbol = '&times;';
-                $result = $_GET['value1'] * $_GET['value2'];
+                $result = $_POST['value1'] * $_POST['value2'];
                 break;
             case 'division':
                 $opSymbol = '&divide;';
-                $result = $_GET['value1'] / $_GET['value2'];
+                $result = $_POST['value1'] / $_POST['value2'];
                 break;
             default:
                 break;
         }
     }
-    ?>
 
-    <form method="GET" action="#">
+    // OUTPUT BUFFER
+    // Hold onto the ECHOs, and don't send yet.
+    ob_start();
+    ?>
+    <form method="POST" action="#">
     <label for="num1">
         Enter first operand:
         <input 
@@ -79,4 +82,11 @@ function techCareersCalculator()
         <?php echo $result; ?>
     </p>
     <?php endif;
+
+    // END OUTPUT BUFFER
+    // Everything after this point will be echoes like normal again.
+    $outputString = ob_get_clean();
+
+    // shortcodes will output should RETURN a STRING.
+    return $outputString;
 }
