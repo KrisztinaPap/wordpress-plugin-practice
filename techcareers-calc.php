@@ -1,4 +1,5 @@
 
+
 <?php
 /**
  * Plugin Name:       TECHCareers Calculator Plugin
@@ -11,6 +12,8 @@
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
+
+// CODE BORROWED FROM WARREN UHRICH'S LESSON NOTES (INSTRUCTOR AT TECHCAREERS) ---------> 
 
 // if content contains first, second (function) will run
 add_shortcode( 'techcareers-calc', 'techCareersCalculator'); 
@@ -90,3 +93,5 @@ function techCareersCalculator()
     // shortcodes will output should RETURN a STRING.
     return $outputString;
 }
+
+/** END OF BORROWED CODE */  
