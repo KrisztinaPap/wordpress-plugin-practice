@@ -12,6 +12,9 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+// if content contains first, second (function) will run
+add_shortcode( 'techcareers-calc', 'techCareersCalculator'); 
+
 function techCareersCalculator()
 {
     $result = FALSE;
